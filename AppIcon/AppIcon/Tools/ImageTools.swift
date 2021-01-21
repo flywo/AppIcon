@@ -25,7 +25,9 @@ extension NSImage {
     ///   - height: 高度
     /// - Returns: 结果图片
     func resize(width: CGFloat, height: CGFloat) -> NSImage {
-        let img = NSImage(size: CGSize(width: width/2, height: height/2))
+        let width = width/2
+        let height = height/2
+        let img = NSImage(size: CGSize(width: width, height: height))
         img.lockFocus()
         let ctx = NSGraphicsContext.current
         ctx?.imageInterpolation = .high

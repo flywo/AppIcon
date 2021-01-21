@@ -27,7 +27,7 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(width: 250, height: 250)
                     .onTapGesture {
-                        
+                        showChoiceImagePanel()
                     }
                 Spacer()
             }
@@ -88,7 +88,13 @@ struct ContentView: View {
                       dismissButton: .default(Text(TextTools.Sure)))
             }
     }
+}
+
+
+extension ContentView {
     
+    /// 检查是否选择图片和路径
+    /// - Returns: 结果
     func checkError() -> Bool {
         if image == nil {
             errorMSG = TextTools.NoImage
@@ -101,6 +107,28 @@ struct ContentView: View {
             return false
         }
         return true
+    }
+    
+    /// 弹出图片选择框
+    func showChoiceImagePanel() {
+        let dialog = NSOpenPanel()
+        dialog.message = TextTools.ChoiceImageMSG
+        dialog.canChooseFiles = true
+        dialog.allowsMultipleSelection = false
+        dialog.allowedFileTypes = ["png", "jpg", "bmp", "jpeg"]
+        dialog.canChooseDirectories = false
+        dialog.canCreateDirectories = false
+        if dialog.runModal() == NSApplication.ModalResponse.OK {
+            if let url = dialog.url {
+                choiceImage(url: url)
+            }
+        }
+    }
+    
+    /// 图片选择完毕
+    /// - Parameter url: 图片URL
+    func choiceImage(url: URL) {
+        image = NSImage(byReferencingFile: url.path)!
     }
 }
 

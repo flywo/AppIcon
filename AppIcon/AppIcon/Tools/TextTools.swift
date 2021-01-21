@@ -25,4 +25,5 @@ struct TextTools {
     static let iPad = "iPad"
     static let iWatch = "iWatch"
     static let Mac = "Mac"
+    static let ChoiceImageMSG = "请选择图片";
 }

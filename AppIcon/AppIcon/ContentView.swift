@@ -36,7 +36,7 @@ struct ContentView: View {
                     .padding()
                     .disabled(true)
                 Button(TextTools.Choice) {
-                    
+                    showImageSavePanel()
                 }.padding()
             }
             HStack {
@@ -121,6 +121,22 @@ extension ContentView {
         if dialog.runModal() == NSApplication.ModalResponse.OK {
             if let url = dialog.url {
                 choiceImage(url: url)
+            }
+        }
+    }
+    
+    /// 弹出图片保存路径选择框
+    func showImageSavePanel() {
+        let dialog = NSOpenPanel()
+        dialog.message = TextTools.ChoiceImageSavePath
+        dialog.canChooseFiles = false
+        dialog.allowsMultipleSelection = false
+        dialog.canChooseDirectories = true
+        dialog.canCreateDirectories = true
+        dialog.prompt = TextTools.Sure
+        if dialog.runModal() == NSApplication.ModalResponse.OK {
+            if let path = dialog.url?.absoluteString {
+                self.path = path
             }
         }
     }

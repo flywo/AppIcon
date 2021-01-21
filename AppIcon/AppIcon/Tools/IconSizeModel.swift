@@ -12,7 +12,7 @@ struct IconSizeModel {
     let size: CGFloat
     let multiplier: CGFloat
     func width() -> CGFloat {
-        return CGFloat(ceil(size)) * multiplier
+        return size * multiplier
     }
     func name() -> String {
         if multiplier == 1 {

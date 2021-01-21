@@ -22,12 +22,10 @@ struct TextTools {
     static let Sure = "确定"
     static let NoImage = "尚未选择图片！"
     static let NoPath = "尚未指定保存路径！"
-    static let iPhone = "iPhone"
-    static let iPad = "iPad"
-    static let iWatch = "iWatch"
-    static let Mac = "Mac"
+    static let iPhone = "iOS"
+    static let iPad = "macOS"
+    static let iWatch = "watchOS"
+    static let Mac = "tvOS"
     static let ChoiceImageMSG = "请选择图片"
     static let ChoiceImageSavePath = "请选择图片保存路径"
-    
-    static let OldPathKey = "OldPath"
 }

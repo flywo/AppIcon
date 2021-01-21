@@ -103,9 +103,6 @@ struct ContentView: View {
                       secondaryButton: .default(Text(TextTools.Cancel)))
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-        .onAppear {
-            path = UserDefaults.standard.value(forKey: TextTools.OldPathKey) as? String ?? ""
-        }
     }
 }
 
@@ -195,7 +192,6 @@ extension ContentView {
         dialog.prompt = TextTools.Sure
         if dialog.runModal() == NSApplication.ModalResponse.OK {
             if let path = dialog.url?.absoluteString {
-                UserDefaults.standard.setValue(path, forKey: TextTools.OldPathKey)
                 self.path = path
             }
         }

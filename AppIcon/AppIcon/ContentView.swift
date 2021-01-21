@@ -67,11 +67,11 @@ struct ContentView: View {
                     alertShow.toggle()
                 }.background(Color.green.cornerRadius(5))
                 Spacer()
-                Button(TextTools.iPad) {
+                Button(TextTools.iMac) {
                     guard checkError() else {
                         return
                     }
-                    choiceDevice = TextTools.iPad
+                    choiceDevice = TextTools.iMac
                     alertShow.toggle()
                 }.background(Color.green.cornerRadius(5))
                 Spacer()
@@ -82,14 +82,6 @@ struct ContentView: View {
                     choiceDevice = TextTools.iWatch
                     alertShow.toggle()
                 }.background(Color.green.cornerRadius(5))
-                Spacer()
-                Button(TextTools.Mac) {
-                    guard checkError() else {
-                        return
-                    }
-                    choiceDevice = TextTools.Mac
-                    alertShow.toggle()
-                }.background(Color.green.cornerRadius(5))
             }.padding()
             .alert(isPresented: $alertShow) { () -> Alert in
                 Alert(title: Text(TextTools.AlertTitle),
@@ -98,6 +90,10 @@ struct ContentView: View {
                                               action: {
                                                 if choiceDevice == TextTools.iPhone {
                                                     saveIPhoneIcon()
+                                                } else if choiceDevice == TextTools.iMac {
+                                                    saveMACIcon()
+                                                } else if choiceDevice == TextTools.iWatch {
+                                                    saveWatchIcon()
                                                 }
                                               }),
                       secondaryButton: .default(Text(TextTools.Cancel)))
@@ -110,23 +106,15 @@ struct ContentView: View {
 extension ContentView {
     
     func saveIPhoneIcon() {
-        saveIcon(sizes: [
-            IconSizeModel(size: 20, multiplier: 1),
-            IconSizeModel(size: 20, multiplier: 2),
-            IconSizeModel(size: 20, multiplier: 3),
-            IconSizeModel(size: 29, multiplier: 1),
-            IconSizeModel(size: 29, multiplier: 2),
-            IconSizeModel(size: 29, multiplier: 3),
-            IconSizeModel(size: 40, multiplier: 1),
-            IconSizeModel(size: 40, multiplier: 2),
-            IconSizeModel(size: 40, multiplier: 3),
-            IconSizeModel(size: 60, multiplier: 2),
-            IconSizeModel(size: 60, multiplier: 3),
-            IconSizeModel(size: 76, multiplier: 1),
-            IconSizeModel(size: 76, multiplier: 2),
-            IconSizeModel(size: 83.5, multiplier: 2),
-            IconSizeModel(size: 1024, multiplier: 1)
-        ])
+        saveIcon(sizes: IconSizeModel.iOSSizes)
+    }
+    
+    func saveMACIcon() {
+        saveIcon(sizes: IconSizeModel.macOSSizes)
+    }
+    
+    func saveWatchIcon() {
+        saveIcon(sizes: IconSizeModel.watchOSSizes)
     }
     
     func saveIcon(sizes: [IconSizeModel]) {

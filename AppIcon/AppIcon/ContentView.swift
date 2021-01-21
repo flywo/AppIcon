@@ -32,6 +32,9 @@ struct ContentView: View {
                 Spacer()
             }
             HStack {
+                Button(TextTools.OpenPath) {
+                    openImagePath()
+                }.padding()
                 TextField(TextTools.Path, text: $path)
                     .padding()
                     .disabled(true)
@@ -107,6 +110,16 @@ extension ContentView {
             return false
         }
         return true
+    }
+    
+    /// 打开文件夹
+    func openImagePath() {
+        if path.isEmpty {
+            errorMSG = TextTools.NoPath
+            errorAlertShow.toggle()
+            return
+        }
+        NSWorkspace.shared.open(URL(fileURLWithPath: path))
     }
     
     /// 弹出图片选择框

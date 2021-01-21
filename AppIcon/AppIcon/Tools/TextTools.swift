@@ -12,6 +12,7 @@ struct TextTools {
     static let Tips = "拖拽或者选择一张用于制作ICON的图片，然后选择需要的平台按钮即可生成。为了最好的体验，请使用1024x1024以上的图片。"
     static let Path = "保存路径"
     static let Choice = "选择路径"
+    static let OpenPath = "打开文件夹"
     static let Build = "生成"
     static let ChoiceDevice = "已选择"
     static let AlertTitle = "提示"

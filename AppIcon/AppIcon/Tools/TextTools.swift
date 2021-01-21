@@ -28,4 +28,6 @@ struct TextTools {
     static let Mac = "Mac"
     static let ChoiceImageMSG = "请选择图片"
     static let ChoiceImageSavePath = "请选择图片保存路径"
+    
+    static let OldPathKey = "OldPath"
 }

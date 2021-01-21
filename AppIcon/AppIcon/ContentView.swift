@@ -39,13 +39,13 @@ struct ContentView: View {
             HStack {
                 Button(TextTools.OpenPath) {
                     openImagePath()
-                }.padding()
+                }.background(Color.green.cornerRadius(5)).padding()
                 TextField(TextTools.Path, text: $path)
                     .padding()
                     .disabled(true)
                 Button(TextTools.Choice) {
                     showImageSavePanel()
-                }.padding()
+                }.background(Color.green.cornerRadius(5)).padding()
             }
             HStack {
                 Button(TextTools.iPhone) {
@@ -92,6 +92,9 @@ struct ContentView: View {
                       secondaryButton: .default(Text(TextTools.Cancel)))
             }
         }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+        .onAppear {
+            path = UserDefaults.standard.value(forKey: TextTools.OldPathKey) as? String ?? ""
+        }
     }
 }
 
@@ -181,6 +184,7 @@ extension ContentView {
         dialog.prompt = TextTools.Sure
         if dialog.runModal() == NSApplication.ModalResponse.OK {
             if let path = dialog.url?.absoluteString {
+                UserDefaults.standard.setValue(path, forKey: TextTools.OldPathKey)
                 self.path = path
             }
         }

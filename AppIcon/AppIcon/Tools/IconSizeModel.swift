@@ -16,9 +16,15 @@ struct IconSizeModel {
     }
     func name() -> String {
         if multiplier == 1 {
-            return "ICON-\(size).png"
+            if Int(size * 10) % 10 != 0 {
+                return "ICON-\(String(format: "%.1f", size)).png"
+            }
+            return "ICON-\(String(format: "%.f", size)).png"
         }
-        return "ICON-\(size)@\(multiplier)x.png"
+        if Int(size * 10) % 10 != 0 {
+            return "ICON-\(String(format: "%.1f", size))@\(Int(multiplier))x.png"
+        }
+        return "ICON-\(String(format: "%.f", size))@\(Int(multiplier))x.png"
     }
 }
 

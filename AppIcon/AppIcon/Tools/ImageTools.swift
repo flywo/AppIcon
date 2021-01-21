@@ -25,7 +25,7 @@ extension NSImage {
     ///   - height: 高度
     /// - Returns: 结果图片
     func resize(width: CGFloat, height: CGFloat) -> NSImage {
-        let img = NSImage(size: CGSize(width: width, height: height))
+        let img = NSImage(size: CGSize(width: width/2, height: height/2))
         img.lockFocus()
         let ctx = NSGraphicsContext.current
         ctx?.imageInterpolation = .high
@@ -41,6 +41,7 @@ extension NSImage {
     /// 保存图片
     /// - Parameter path: 路径
     /// - Returns: 结果
+    @discardableResult
     func save(_ path: String) -> Bool {
         guard let url = URL(string: path) else { return false }
         do {

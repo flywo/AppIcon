@@ -29,6 +29,11 @@ struct ContentView: View {
                     .onTapGesture {
                         showChoiceImagePanel()
                     }
+                    .alert(isPresented: $errorAlertShow) { () -> Alert in
+                        Alert(title: Text(TextTools.AlertTitle),
+                              message: Text(errorMSG),
+                              dismissButton: .default(Text(TextTools.Sure)))
+                    }
                 Spacer()
             }
             HStack {
@@ -75,26 +80,53 @@ struct ContentView: View {
                     alertShow.toggle()
                 }.background(Color.green.cornerRadius(5))
             }.padding()
-        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .alert(isPresented: $alertShow) { () -> Alert in
                 Alert(title: Text(TextTools.AlertTitle),
                       message: Text(TextTools.AlertMSG1 + choiceDevice + TextTools.AlertMSG2),
                       primaryButton: .default(Text(TextTools.Sure),
                                               action: {
-                                                  
+                                                if choiceDevice == TextTools.iPhone {
+                                                    saveIPhoneIcon()
+                                                }
                                               }),
                       secondaryButton: .default(Text(TextTools.Cancel)))
             }
-            .alert(isPresented: $errorAlertShow) { () -> Alert in
-                Alert(title: Text(TextTools.AlertTitle),
-                      message: Text(errorMSG),
-                      dismissButton: .default(Text(TextTools.Sure)))
-            }
+        }.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
     }
 }
 
 
 extension ContentView {
+    
+    func saveIPhoneIcon() {
+        saveIcon(sizes: [
+            IconSizeModel(size: 20, multiplier: 1),
+            IconSizeModel(size: 20, multiplier: 2),
+            IconSizeModel(size: 20, multiplier: 3),
+            IconSizeModel(size: 29, multiplier: 1),
+            IconSizeModel(size: 29, multiplier: 2),
+            IconSizeModel(size: 29, multiplier: 3),
+            IconSizeModel(size: 40, multiplier: 1),
+            IconSizeModel(size: 40, multiplier: 2),
+            IconSizeModel(size: 40, multiplier: 3),
+            IconSizeModel(size: 60, multiplier: 2),
+            IconSizeModel(size: 60, multiplier: 3),
+            IconSizeModel(size: 76, multiplier: 1),
+            IconSizeModel(size: 76, multiplier: 2),
+            IconSizeModel(size: 83.5, multiplier: 2),
+            IconSizeModel(size: 1024, multiplier: 1)
+        ])
+    }
+    
+    func saveIcon(sizes: [IconSizeModel]) {
+        if !FileManager.default.fileExists(atPath: path, isDirectory: nil) {
+            try? FileManager.default.createDirectory(at: URL(fileURLWithPath: path), withIntermediateDirectories: true, attributes: nil)
+        }
+        for index in 0 ..< sizes.count {
+            let item = sizes[index]
+            image?.resize(width: item.width(), height: item.width()).save(path+item.name())
+        }
+    }
     
     /// 检查是否选择图片和路径
     /// - Returns: 结果

@@ -15,6 +15,7 @@ struct ContentView: View {
     @State private var choiceDevice = ""
     @State private var errorMSG = ""
     @State private var image: NSImage?
+    @State private var dragOver = false
     
     var body: some View {
         VStack {
@@ -29,6 +30,16 @@ struct ContentView: View {
                     .onTapGesture {
                         showChoiceImagePanel()
                     }
+                    .onDrop(of: ["public.file-url"], isTargeted: $dragOver, perform: { providers -> Bool in
+                        providers.first?.loadDataRepresentation(forTypeIdentifier: "public.file-url", completionHandler: { (data, error) in
+                            if let data = data, let path = NSString(data: data, encoding: 4),
+                               let url = URL(string: path as String) {
+                                let image = NSImage(contentsOf: url)
+                                self.image = image
+                            }
+                        })
+                        return true
+                    })
                     .alert(isPresented: $errorAlertShow) { () -> Alert in
                         Alert(title: Text(TextTools.AlertTitle),
                               message: Text(errorMSG),

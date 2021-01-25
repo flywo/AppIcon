@@ -27,5 +27,4 @@ struct TextTools {
     static let iWatch = "watchOS"
     static let ChoiceImageMSG = "请选择图片"
     static let ChoiceImageSavePath = "请选择图片保存路径"
-    static let HelpText = "本APP用于生产iOS、watchOS、macOS使用的ICON图片，方便快捷简单。"
 }

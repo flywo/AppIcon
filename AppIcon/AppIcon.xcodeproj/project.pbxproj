@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		042BF0F325B95F4100D8125A /* IconSizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042BF0F225B95F4100D8125A /* IconSizeModel.swift */; };
 		048EEB4525B92B1200AFC4A1 /* ImageTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048EEB4425B92B1200AFC4A1 /* ImageTools.swift */; };
-		04B4580525BA7B3F003EB655 /* HelpWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B4580425BA7B3F003EB655 /* HelpWindow.swift */; };
 		8CAFF0BC25B869AF0007D65F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFF0BB25B869AF0007D65F /* AppDelegate.swift */; };
 		8CAFF0BE25B869AF0007D65F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFF0BD25B869AF0007D65F /* ContentView.swift */; };
 		8CAFF0C025B869B10007D65F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CAFF0BF25B869B10007D65F /* Assets.xcassets */; };
@@ -21,7 +20,6 @@
 /* Begin PBXFileReference section */
 		042BF0F225B95F4100D8125A /* IconSizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSizeModel.swift; sourceTree = "<group>"; };
 		048EEB4425B92B1200AFC4A1 /* ImageTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTools.swift; sourceTree = "<group>"; };
-		04B4580425BA7B3F003EB655 /* HelpWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpWindow.swift; sourceTree = "<group>"; };
 		8CAFF0B825B869AF0007D65F /* AppIcon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppIcon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CAFF0BB25B869AF0007D65F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CAFF0BD25B869AF0007D65F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,7 +64,6 @@
 				8CAFF0CF25B86F9D0007D65F /* Tools */,
 				8CAFF0BB25B869AF0007D65F /* AppDelegate.swift */,
 				8CAFF0BD25B869AF0007D65F /* ContentView.swift */,
-				04B4580425BA7B3F003EB655 /* HelpWindow.swift */,
 				8CAFF0BF25B869B10007D65F /* Assets.xcassets */,
 				8CAFF0C425B869B10007D65F /* Main.storyboard */,
 				8CAFF0C725B869B10007D65F /* Info.plist */,
@@ -168,7 +165,6 @@
 				042BF0F325B95F4100D8125A /* IconSizeModel.swift in Sources */,
 				8CAFF0BC25B869AF0007D65F /* AppDelegate.swift in Sources */,
 				8CAFF0D125B86FB50007D65F /* TextTools.swift in Sources */,
-				04B4580525BA7B3F003EB655 /* HelpWindow.swift in Sources */,
 				048EEB4525B92B1200AFC4A1 /* ImageTools.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
